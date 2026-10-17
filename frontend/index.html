@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campus Clubs</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 1000px; margin: 20px auto; padding: 0 12px; }
+    h1 { text-align: center; }
+    form { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px;
+           background: #f4f6f8; padding: 14px; border-radius: 8px; }
+    label { font-size: 13px; display: flex; flex-direction: column; gap: 4px; }
+    input, textarea { padding: 7px; border: 1px solid #bbb; border-radius: 4px; font: inherit; }
+    .actions { grid-column: 1 / -1; display: flex; gap: 8px; }
+    button { padding: 8px 14px; border: 0; border-radius: 4px; cursor: pointer; color: #fff; background: #1a73e8; }
+    button.secondary { background: #666; }
+    button.edit { background: #f0a500; }
+    button.del { background: #d93025; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 14px; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background: #1a73e8; color: #fff; }
+    #message { margin: 10px 0; font-weight: bold; }
+    .scroll { overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>Campus Club Profiles</h1>
+  <div id="message"></div>
+
+  <form id="clubForm">
+    <input type="hidden" id="clubId">
+    <label>Name *<input id="name" required maxlength="120"></label>
+    <label>Category<input id="category" maxlength="60"></label>
+    <label>Meeting Day<input id="meeting_day" maxlength="20"></label>
+    <label>Contact Email<input id="contact_email" type="email" maxlength="120"></label>
+    <label>Members Count<input id="members_count" type="number" min="0" value="0"></label>
+    <label>Description<textarea id="description" rows="2"></textarea></label>
+    <div class="actions">
+      <button type="submit" id="saveBtn">Add Club</button>
+      <button type="button" class="secondary" id="cancelBtn" style="display:none">Cancel Edit</button>
+    </div>
+  </form>
+
+  <div class="scroll">
+    <table>
+      <thead>
+        <tr><th>ID</th><th>Name</th><th>Category</th><th>Meeting Day</th><th>Email</th>
+            <th>Members</th><th>Description</th><th>Actions</th></tr>
+      </thead>
+      <tbody id="clubTable"></tbody>
+    </table>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
